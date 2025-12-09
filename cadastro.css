@@ -1,0 +1,15 @@
+*{
+    margin: 0px;
+}
+
+.container {
+    width: 90%; /* Largura do container, pode ser um valor fixo (ex: 900px) ou percentual */
+    max-width: 1200px; /* Garante que o container não fique muito grande em telas muito largas */
+    margin: 0 auto; /* Centraliza o container horizontalmente na página */
+    padding: 20px; /* Espaço interno entre o conteúdo e a borda do container */
+    border: 1px solid #000000; /* Uma borda sutil */
+    box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Sombra para profundidade */
+    margin-top: 20px; /* Espaço acima do container */
+    margin-bottom: 20px; /* Espaço abaixo do container */
+    border-radius: 15px;
+}
