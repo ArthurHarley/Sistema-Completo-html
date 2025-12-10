@@ -4,39 +4,104 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edição</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="cadastro.css">
 </head>
+
 <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary shadow-sm">
         <div class="container-fluid">
-          <a class="navbar-brand" href="cadastro-tarefas.html">Home</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link" href="listagem.html">Listagem</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="registro.html">Novo Registro</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="edicao.html">Tela de Edição</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="exclusao.html">Exclusão de Registro</a>
-              </li>
-            </ul>
-          </div>
+            <a class="navbar-brand fw-bold" href="cadastro-tarefas.html">Home</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="listagem.html">Listagem</a></li>
+                    <li class="nav-item"><a class="nav-link" href="registro.html">Novo Registro</a></li>
+                </ul>
+            </div>
         </div>
-      </nav>
+    </nav>
 
     <div class="container">
 
+        <h2 class="mt-3">Editar Tarefa</h2>
+
+        <div class="card mt-4">
+            <div class="card-header bg-primary text-white">
+                Dados da Tarefa
+            </div>
+
+            <div class="card-body">
+                <form id="formEdicao">
+
+                    <div class="mb-3">
+                        <label class="form-label">Nome da Tarefa</label>
+                        <input id="nome" type="text" class="form-control">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Descrição</label>
+                        <textarea id="descricao" class="form-control" rows="3"></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Prioridade</label>
+                        <select id="prioridade" class="form-select">
+                            <option>Alta</option>
+                            <option>Média</option>
+                            <option>Baixa</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Data e Hora</label>
+                        <input id="dataHora" type="datetime-local" class="form-control">
+                    </div>
+
+                    <button class="btn btn-success" type="button" onclick="salvar()">Salvar Alterações</button>
+
+                </form>
+            </div>
+        </div>
+
     </div>
-    
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+    <footer class="text-center p-3 mt-4 footer-custom">
+        © 2025 My List+ — Todos os direitos reservados.
+    </footer>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const id = params.get("id");
+
+        let tarefas = JSON.parse(localStorage.getItem("tarefas")) || [];
+
+        if (tarefas[id]) {
+            document.getElementById("nome").value = tarefas[id].nome;
+            document.getElementById("descricao").value = tarefas[id].descricao;
+            document.getElementById("prioridade").value = tarefas[id].prioridade;
+            document.getElementById("dataHora").value = tarefas[id].dataHora;
+        }
+
+        function salvar() {
+            tarefas[id] = {
+                nome: document.getElementById("nome").value,
+                descricao: document.getElementById("descricao").value,
+                prioridade: document.getElementById("prioridade").value,
+                dataHora: document.getElementById("dataHora").value
+            };
+
+            localStorage.setItem("tarefas", JSON.stringify(tarefas));
+
+            window.location.href = "listagem.html";
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
