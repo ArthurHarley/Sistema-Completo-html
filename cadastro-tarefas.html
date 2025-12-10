@@ -4,53 +4,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="cadastro.css">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+
+    <!-- Hero / Banner -->
+    <section class="hero text-center text-white">
+        <h1 class="display-4 fw-bold">Bem-vindo ao My List+</h1>
+        <p class="lead">Ainda não possui uma tarefa? Ou apenas deseja adicionar uma nova? Então clique aqui</p>
+        <p class="lead">👇</p>
+        <a href="registro.html" class="btn btn-light btn-lg mt-3">Criar Nova Tarefa</a>
+    </section>
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary shadow-sm">
         <div class="container-fluid">
-          <a class="navbar-brand" href="cadastro-tarefas.html">Home</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <a class="navbar-brand fw-bold" href="cadastro-tarefas.html">Home</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link" href="listagem.html">Listagem</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="registro.html">Novo Registro</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="edicao.html">Tela de Edição</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="exclusao.html">Exclusão de Registro</a>
-              </li>
+              <li class="nav-item"><a class="nav-link" href="listagem.html">Listagem</a></li>
+              <li class="nav-item"><a class="nav-link" href="registro.html">Novo Registro</a></li>
             </ul>
           </div>
         </div>
-      </nav>
+    </nav>
 
     <div class="container">
 
-        <h1>My List+</h1>
+        <h2 class="mt-4 text-center">Nossas Funcionalidades</h2>
 
-        <p>Parágrafo</p>
+        <p class="text-center text-muted">Gerencie suas tarefas com facilidade usando as opções abaixo.</p>
 
-        <div class="card">
-            <div class="card-header">
-            Adicione um novo registro
+        <div class="card mt-4">
+            <div class="card-header bg-primary text-white">
+                Liste suas tarefas
             </div>
             <div class="card-body">
-            <p class="card-text">Faça um novo registro de forma rápida clicando no botão abaixo.</p>
-            <a href="registro.html" class="btn btn-primary">Clique Aqui!</a>
+                <p class="card-text">Pretende ver todas as tarefas disponíveis? Clique aqui.</p>
+                <a href="listagem.html" class="btn btn-primary">Clique Aqui!</a>
             </div>
         </div>
 
     </div>
-    
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+    <button class="btn btn-primary back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+        ↑
+    </button>
+
+    <footer class="text-center p-3 mt-4 footer-custom">
+        © 2025 My List+ — Todos os direitos reservados.
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
