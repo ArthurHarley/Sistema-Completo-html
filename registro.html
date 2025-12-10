@@ -3,40 +3,125 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <title>Registro de Tarefa</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="cadastro.css">
 </head>
-<body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="cadastro-tarefas.html">Home</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link" href="listagem.html">Listagem</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="registro.html">Novo Registro</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="edicao.html">Tela de Edição</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="exclusao.html">Exclusão de Registro</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
 
+<body>
+
+    <!-- NAVBAR PADRÃO -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary shadow-sm">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bold" href="cadastro-tarefas.html">Home</a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="listagem.html">Listagem</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="registro.html">Novo Registro</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- CONTAINER PRINCIPAL -->
     <div class="container">
 
+        <h2 class="mt-3">Criar Nova Tarefa</h2>
+        <p class="text-muted">Preencha os campos abaixo para registrar uma nova tarefa.</p>
+
+        <div class="card mt-4">
+            <div class="card-header bg-primary text-white">
+                Formulário de Cadastro
+            </div>
+
+            <div class="card-body">
+
+                <form id="formTarefa">
+
+                    <!-- Nome -->
+                    <div class="mb-3">
+                        <label class="form-label">Nome da Tarefa</label>
+                        <input type="text" class="form-control" id="nome" placeholder="Ex: Estudar Matemática">
+                    </div>
+
+                    <!-- Descrição -->
+                    <div class="mb-3">
+                        <label class="form-label">Descrição</label>
+                        <textarea class="form-control" id="descricao" rows="3" placeholder="Descreva a tarefa..."></textarea>
+                    </div>
+
+                    <!-- Prioridade -->
+                    <div class="mb-3">
+                        <label class="form-label">Prioridade</label>
+                        <select class="form-select" id="prioridade">
+                            <option disabled selected>Selecione...</option>
+                            <option value="Alta">Alta</option>
+                            <option value="Média">Média</option>
+                            <option value="Baixa">Baixa</option>
+                        </select>
+                    </div>
+
+                    <!-- Data/hora -->
+                    <div class="mb-3">
+                        <label class="form-label">Dia e Hora Prevista</label>
+                        <input type="datetime-local" class="form-control" id="dataHora">
+                    </div>
+
+                    <!-- Botão salvar -->
+                    <button type="button" class="btn btn-success" onclick="salvarTarefa()">
+                        Salvar Tarefa
+                    </button>
+
+                </form>
+
+            </div>
+        </div>
+
     </div>
-    
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+    <footer class="text-center p-3 mt-4 footer-custom">
+        © 2025 My List+ — Todos os direitos reservados.
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- SCRIPT PARA SALVAR AS TAREFAS -->
+    <script>
+        function salvarTarefa() {
+
+            const nome = document.getElementById("nome").value.trim();
+            const descricao = document.getElementById("descricao").value.trim();
+            const prioridade = document.getElementById("prioridade").value;
+            const dataHora = document.getElementById("dataHora").value;
+
+            if (!nome || !descricao || !prioridade || !dataHora) {
+                alert("Preencha todos os campos antes de salvar.");
+                return;
+            }
+
+            const novaTarefa = {
+                nome,
+                descricao,
+                prioridade,
+                dataHora
+            };
+
+            let tarefas = JSON.parse(localStorage.getItem("tarefas")) || [];
+            tarefas.push(novaTarefa);
+
+            localStorage.setItem("tarefas", JSON.stringify(tarefas));
+
+            alert("Tarefa registrada com sucesso!");
+
+            window.location.href = "listagem.html";
+        }
+    </script>
+
 </body>
 </html>
