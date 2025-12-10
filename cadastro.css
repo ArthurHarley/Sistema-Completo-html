@@ -1,15 +1,44 @@
 *{
-    margin: 0px;
+    margin: 0;
 }
 
+.hero {
+    background: linear-gradient(135deg, #007bff, #6610f2);
+    padding: 60px 20px;
+}
+
+/* Container principal */
 .container {
-    width: 90%; /* Largura do container, pode ser um valor fixo (ex: 900px) ou percentual */
-    max-width: 1200px; /* Garante que o container não fique muito grande em telas muito largas */
-    margin: 0 auto; /* Centraliza o container horizontalmente na página */
-    padding: 20px; /* Espaço interno entre o conteúdo e a borda do container */
-    border: 1px solid #000000; /* Uma borda sutil */
-    box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Sombra para profundidade */
-    margin-top: 20px; /* Espaço acima do container */
-    margin-bottom: 20px; /* Espaço abaixo do container */
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #00000022;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
     border-radius: 15px;
+    background-color: #fff;
+}
+
+.card:hover {
+    transform: scale(1.02);
+    transition: 0.3s;
+}
+
+.back-to-top {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Rodapé */
+.footer-custom {
+    background: #f0f0f0;
+    color: #555;
 }
